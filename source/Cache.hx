@@ -109,7 +109,7 @@ class Cache extends MusicBeatState
 
 	function cache()
 	{
-		#if !linux
+		#if (desktop && !linux)
 			var aaa:FlxSprite;
 			aaa = new FlxSprite();
 			aaa.frames = Paths.getSparrowAtlas('characters/cassettegirl-st','shared');
