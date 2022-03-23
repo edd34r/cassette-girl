@@ -41,6 +41,10 @@ class Cache extends MusicBeatState
 
 	override function create()
 	{
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+
 		FlxG.mouse.visible = false;
 
 		FlxG.worldBounds.set(0,0);
@@ -59,21 +63,21 @@ class Cache extends MusicBeatState
 		changetext();
 
 		#if cpp
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/characters")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/shared/images/characters")))
 		{
 			if (!i.endsWith(".png"))
 				continue;
 			images.push(i);
 		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/weekcg")))
-			{
-				if (!i.endsWith(".png"))
-					continue;
-				images2.push(i);
-			}
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/shared/images/weekcg")))
+		{
+			if (!i.endsWith(".png"))
+				continue;
+			images2.push(i);
+		}
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/songs")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath(SUtil.getPath() + "assets/songs")))
 		{
 			music.push(i);
 		}
