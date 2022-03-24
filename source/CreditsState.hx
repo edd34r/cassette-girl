@@ -24,6 +24,11 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+		#if android
+		['Android Port'],
+		['Saw (M.A. Jigsaw)','saw','Main Coder','https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', 0xFFF73838],
+		[''],
+		#end
 		['Mod Creators'],
 		['Mong',		'MONG',		'Artist and Animator',					'https://twitter.com/spacedoggo_art',	0xFF6699ff],
 		['Saruky',			'SARUKY',		'Composer',				'https://twitter.com/Saruky__',		0xFFf44771],
@@ -103,6 +108,11 @@ class CreditsState extends MusicBeatState
 		bg.color = creditsStuff[curSelected][4];
 		intendedColor = bg.color;
 		changeSelection();
+
+                #if android
+	        addVirtualPad(UP_DOWN, A_B);
+                #end
+
 		super.create();
 	}
 
